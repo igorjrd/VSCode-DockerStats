@@ -1,0 +1,117 @@
+{
+  "name": "docker-stats",
+  "displayName": "Docker stats",
+  "description": "Displays for Docker resource usage in VSCode",
+  "publisher": "igorjrd",
+  "author": {
+    "name": "Igor Jordão Marques",
+    "email": "igorjrd2@gmail.com",
+    "url": "https://github.com/igorjrd"
+  },
+  "version": "0.1.0",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Visualization", "Other"
+  ],
+  "keywords": [
+    "Docker",
+    "Monitor",
+    "Tracker",
+    "Status",
+    "Stats",
+    "CPU",
+    "RAM",
+    "Resources",
+    "Usage",
+    "Container"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://www.github.com/igorjrd/vscode-docker-stats.git"
+  },
+  "galleryBanner": {
+    "color": "#ffffff",
+    "theme": "light"
+  },
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "icon": "media/docker-stats-icon.png",
+  "contributes": {
+    "commands": [
+      {
+        "command": "docker-stats.selectStatusBarInfo",
+        "title": "Docker Stats: Select Info to Display on Status Bar"
+      }
+    ],
+    "icons": {
+      "docker-icon": {
+          "description": "Docker icon",
+          "default": {
+            "fontPath": "./media/fonts/font-icons.woff2",
+            "fontCharacter": "\\E900"
+          }
+      },
+      "ram-icon": {
+        "description": "RAM icon",
+        "default": {
+          "fontPath": "./media/fonts/font-icons.woff2",
+          "fontCharacter": "\\E901"
+        }
+      },
+      "cpu-icon": {
+        "description": "CPU icon",
+        "default": {
+          "fontPath": "./media/fonts/font-icons.woff2",
+          "fontCharacter": "\\E902"
+        }
+      }
+    },
+    "configuration":[
+      {
+        "title": "DockerStats",
+        "properties": {
+          "docker-stats.statusBarShowCpu": {
+            "type": "boolean",
+            "default": true,
+            "description": "Specifies if CPU percentage should be displayed on extension status bar item"
+          },
+          "docker-stats.statusBarShowRamTotal": {
+            "type": "boolean",
+            "default": true,
+            "description": "Specifies if RAM total allocation use should be displayed on extension status bar item"
+          },
+          "docker-stats.statusBarShowRamPercentage": {
+            "type": "boolean",
+            "default": true,
+            "description": "Specifies if allocated RAM percentage should be displayed on extension status bar item"
+          }
+        }
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.74.0",
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "20.2.5",
+    "@typescript-eslint/eslint-plugin": "^5.59.8",
+    "@typescript-eslint/parser": "^5.59.8",
+    "eslint": "^8.41.0",
+    "glob": "^8.1.0",
+    "mocha": "^10.2.0",
+    "typescript": "^5.1.3",
+    "@vscode/test-electron": "^2.3.2"
+  }
+}
